@@ -19,3 +19,15 @@ class AirQuality(db.Model):
 
     def __repr__(self):
         return "<Air Quality {}>".format(self.string)
+
+    def to_dict(self):
+        data = {
+            "timestamp": self.timestamp,
+            "temp": self.temp,
+            "humidity": self.humidity,
+            "particles": self.particles,
+            "eco2": self.eco2,
+            "tvoc": self.tvoc,
+        }
+
+        return data
