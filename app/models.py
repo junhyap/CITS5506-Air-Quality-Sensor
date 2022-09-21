@@ -3,10 +3,13 @@ from datetime import datetime
 
 
 class AirQuality(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    string = db.Column(db.String(64))
+    # id = db.Column(db.Integer, primary_key=True)
     timestamp = db.Column(
-        db.DateTime, index=True, default=datetime.now(), nullable=False
+        db.String(64),
+        index=True,
+        default=str(datetime.now()).replace(" ", "-"),
+        nullable=False,
+        primary_key=True,
     )
     temp = db.Column(db.Integer)
     humidity = db.Column(db.Integer)

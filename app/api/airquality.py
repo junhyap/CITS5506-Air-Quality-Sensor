@@ -1,7 +1,7 @@
 from app.api import bp
 
-
-@bp.route("/airquality/<int:id>", methods=["GET"])
+# change to timestamp
+@bp.route("/airquality/<string:timestamp>", methods=["GET"])
 def get_airquality(id):
     pass
 
@@ -17,6 +17,6 @@ def create_airquality():
 
 
 # change to timestamp
-@bp.route("/airqualitys/<int:id>", method=["PUT"])
+@bp.route("/airqualitys/<string:timestamp>", methods=["PUT"])
 def update_airquality(id):
     pass

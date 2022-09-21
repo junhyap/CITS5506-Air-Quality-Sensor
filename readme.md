@@ -10,3 +10,5 @@
 ### Database migrations
 `flask db migrate -m "message"`
 `flask db upgrade`
+
+Be careful of dropping columns as flask doesn't like it. 
