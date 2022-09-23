@@ -1,11 +1,9 @@
 from app.api import bp
-from flask import jsonify
-from app.models import AirQuality
 
 # change to timestamp
 @bp.route("/airquality/<string:timestamp>", methods=["GET"])
-def get_airquality(timestamp):
-    return jsonify(AirQuality.query.get_or_404(timestamp).to_dict())
+def get_airquality(id):
+    pass
 
 
 @bp.route("/airquality", methods=["GET"])
