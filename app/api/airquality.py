@@ -36,9 +36,7 @@ def create_airquality():
         return bad_request("Must include all fields")
 
     data["timestamp"] = str(datetime.now()).replace(" ", "-")
-    print(data["timestamp"])
-    # print(AirQuality.query.timestamp)
-    # print(AirQuality.query.filter(AirQuality.timestamp))
+
     print(
         db.session.query(AirQuality.timestamp)
         .filter_by(timestamp=data["timestamp"])
@@ -61,7 +59,11 @@ def create_airquality():
     return response
 
 
-# change to timestamp
 @bp.route("/airqualitys/<string:timestamp>", methods=["PUT"])
-def update_airquality(id):
-    pass
+def update_airquality(timestamp):
+    airquality = AirQuality.query.get_or_404(timestamp)
+    data = request.get_json() or {}
+    airquality.from_dict(data)
+    db.session.commit()
+
+    return jsonify(airquality.to_dict())
