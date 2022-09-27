@@ -15,7 +15,7 @@ def get_airquality(timestamp):
 @bp.route("/airquality", methods=["GET"])
 def get_airqualitys():
     page = request.args.get("page", 1, type=int)
-    per_page = min(request.args.get("per_page", 10, type=int), 100)
+    per_page = min(request.args.get("per_page", 20, type=int), 100)
     data = AirQuality.to_collection_dict(
         AirQuality.query, page, per_page, "api.get_airqualitys"
     )
@@ -34,8 +34,8 @@ def create_airquality():
         or "tvoc" not in data
     ):
         return bad_request("Must include all fields")
-
-    data["timestamp"] = str(datetime.now()).replace(" ", "-")
+    if "timestamp" not in data:
+        data["timestamp"] = str(datetime.now()).replace(" ", "-")
 
     print(
         db.session.query(AirQuality.timestamp)
