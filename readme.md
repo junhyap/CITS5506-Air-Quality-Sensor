@@ -13,4 +13,3 @@
 `flask db upgrade`
 
 Be careful of dropping columns as flask doesn't like it. 
-
