@@ -39,7 +39,7 @@ class AirQuality(PaginatedAPIMixin, db.Model):
         primary_key=True,
     )
     js_timestamp = db.Column(
-        db.integer,
+        db.Integer,
         defualt=time.mktime(millisecond.timetuple()) * 1000
     )
     temp = db.Column(db.Integer)
