@@ -40,3 +40,36 @@ def dashboard():
     )
 
     return render_template('graph.html', airquality = data)
+
+
+@app.route('/charts')
+def charts():
+
+    page = request.args.get("page", 1, type=int)
+    per_page = min(request.args.get("per_page", 20, type=int), 100)
+    data = AirQuality.to_collection_dict(
+        AirQuality.query, page, per_page, "api.get_airqualitys"
+    )
+    
+    return render_template('charts.html', airquality = data['items'][0:5])
+
+
+@app.route('/temperature_chart')
+def temp_chart():
+    page = request.args.get("page", 1, type=int)
+    per_page = min(request.args.get("per_page", 20, type=int), 100)
+    data = AirQuality.to_collection_dict(
+        AirQuality.query, page, per_page, "api.get_airqualitys"
+    )
+    
+    return render_template('temperature_chart.html', airquality = data['items'][0:5])
+
+@app.route('/basic_xy')
+def basic_xy():
+    page = request.args.get("page", 1, type=int)
+    per_page = min(request.args.get("per_page", 20, type=int), 100)
+    data = AirQuality.to_collection_dict(
+        AirQuality.query, page, per_page, "api.get_airqualitys"
+    )
+    
+    return render_template('basic_xy.html', airquality = data['items'][0:5])
