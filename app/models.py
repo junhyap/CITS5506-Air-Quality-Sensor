@@ -65,6 +65,6 @@ class AirQuality(PaginatedAPIMixin, db.Model):
         return data
 
     def from_dict(self, data):
-        for field in ["timestamp", "temp", "humidity", "particles", "eco2", "tvoc"]:
+        for field in ["timestamp", "js_timestamp", "temp", "humidity", "particles", "eco2", "tvoc"]:
             if field in data:
                 setattr(self, field, data[field])
