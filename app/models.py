@@ -1,4 +1,5 @@
 from datetime import datetime
+from time import time
 from flask import url_for
 from app import db
 
@@ -37,6 +38,10 @@ class AirQuality(PaginatedAPIMixin, db.Model):
         nullable=False,
         primary_key=True,
     )
+    js_timestamp = db.Column(
+        db.integer,
+        defualt=time.mktime(millisecond.timetuple()) * 1000
+    )
     temp = db.Column(db.Integer)
     humidity = db.Column(db.Integer)
     particles = db.Column(db.Integer)
@@ -49,6 +54,7 @@ class AirQuality(PaginatedAPIMixin, db.Model):
     def to_dict(self):
         data = {
             "timestamp": self.timestamp,
+            "js_timestamp": self.js_timestamp,
             "temp": self.temp,
             "humidity": self.humidity,
             "particles": self.particles,
