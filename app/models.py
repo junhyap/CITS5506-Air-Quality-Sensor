@@ -1,5 +1,5 @@
 from datetime import datetime
-from time import time
+import time
 from flask import url_for
 from app import db
 
