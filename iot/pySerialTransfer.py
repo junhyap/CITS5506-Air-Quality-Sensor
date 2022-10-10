@@ -40,5 +40,5 @@ def get_data(this_data):
     else:
         return 'N','N','N','N','N'        
 
-
+main()
 

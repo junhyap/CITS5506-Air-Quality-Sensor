@@ -5,6 +5,7 @@ from app.models import AirQuality
 from app import db
 from app.api.errors import bad_request
 from sqlalchemy import func
+import time
 
 # change to timestamp
 @bp.route("/airquality/<string:timestamp>", methods=["GET"])
@@ -36,6 +37,8 @@ def create_airquality():
         return bad_request("Must include all fields")
     if "timestamp" not in data:
         data["timestamp"] = str(datetime.now()).replace(" ", "-")
+    if "js_timestamp" not in data:
+        data["js_timestamp"] = time.mktime(datetime.now().timetuple()) * 1000
 
     print(
         db.session.query(AirQuality.timestamp)
