@@ -40,7 +40,7 @@ class AirQuality(PaginatedAPIMixin, db.Model):
     )
     js_timestamp = db.Column(
         db.Integer,
-        default=time.mktime(datetime.now().timetuple()) * 1000
+        default=time.mktime(datetime.now().timetuple()) * 1000,
     )
     temp = db.Column(db.Integer)
     humidity = db.Column(db.Integer)

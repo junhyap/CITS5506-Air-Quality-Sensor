@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+
+
+<link rel="stylesheet" href="{{url_for('static', filename='styles/temperature_chart.css')}}">
+
+<script type="text/javascript" src="{{url_for('static', filename='styles/temperature_chart_db.js')}}"></script>
+<script type="text/javascript">
+    data_to_graph = {{temperature_data|tojson}}
+    </script>
+
+</head>
+
+<body>
+    
+<h1>Temperature Graph</h1>
+
+<div id="chartdiv"></div>
+<div id="graph_idea">{{temperature_data}}</div>
+
+</body>
+
+</body>

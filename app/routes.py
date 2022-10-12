@@ -39,7 +39,7 @@ def dashboard():
         AirQuality.query, page, per_page, "api.get_airqualitys"
     )
 
-    return render_template('graph.html', airquality = data)
+    return render_template('graph.html', airquality = data['items'])
 
 
 @app.route('/charts')
@@ -71,5 +71,46 @@ def basic_xy():
     data = AirQuality.to_collection_dict(
         AirQuality.query, page, per_page, "api.get_airqualitys"
     )
-    
+
     return render_template('basic_xy.html', airquality = data['items'][0:5])
+
+@app.route('/temp_db')
+def temp_db():
+    page = request.args.get("page", 1, type=int)
+    per_page = min(request.args.get("per_page", 20, type=int), 100)
+    data = AirQuality.to_collection_dict(
+        AirQuality.query, page, per_page, "api.get_airqualitys"
+    )
+
+    return render_template('temperature_chart_db.html', temperature_data = data['items'])
+
+
+@app.route('/main')
+def main_paige():
+    page = request.args.get("page", 1, type=int)
+    per_page = min(request.args.get("per_page", 20, type=int), 100)
+    data = AirQuality.to_collection_dict(
+        AirQuality.query, page, per_page, "api.get_airqualitys"
+    )
+
+    return render_template('main__single.html', airquality = data['items'][0:5])
+
+@app.route('/main_dashboard')
+def main_dash():
+    page = request.args.get("page", 1, type=int)
+    per_page = min(request.args.get("per_page", 20, type=int), 100)
+    data = AirQuality.to_collection_dict(
+        AirQuality.query, page, per_page, "api.get_airqualitys"
+    )
+
+    return render_template('main_dashboard.html', airquality = data['items'][0:5])
+
+@app.route('/main_temperature')
+def main_temp():
+    page = request.args.get("page", 1, type=int)
+    per_page = min(request.args.get("per_page", 20, type=int), 100)
+    data = AirQuality.to_collection_dict(
+        AirQuality.query, page, per_page, "api.get_airqualitys"
+    )
+
+    return render_template('main_temperature.html', main_temperature_data = data['items'])

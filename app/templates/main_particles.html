@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    
+  <head>
+      
+    <meta charset="utf-8"> 
+      
+    <title>Particles</title>      
+
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/main.css')}}">
+    <script src="{{url_for('static', filename='styles/main.js')}}"></script>
+
+      
+  </head>
+        
+  <body>   
+      
+    <div class='heading'>Particles</div>          
+    
+    <div style="position: sticky; top: 0; z-index: 4;">   
+      
+      <ul>  
+        <li><a href="/main_dashboard">Dashboard</a></li>
+        <li><a href="/main_temperature">Temperature</a></li>
+        <li><a href="/main_humidity">Humidity</a></li>
+        <li><a href="/main_co2">CO2</a></li>
+        <li><a href="/main_particles">Particles</a></li>
+        <li><a href="/main_dust">Dust</a></li>
+        <li style="float: right;"><a href="/main_settings">Settings</a></li>
+      </ul> 
+
+    </div>
+    
+    <div id="main_text" class="slide_div">
+
+      <div class="content_block">
+
+        <h2 class="content_header">Settings</h2>
+
+
+      </div>
+
+      <div class="content_block">
+
+        <h2 class="content_header">Dashboard</h2>
+
+
+      </div>
+
+
+      <div class="content_block">
+        <h2 class="content_header">Temperature</h2>
+        <p class="content">(left blank)</p>
+      </div>
+
+      <div class="content_block">
+       
+        <h2 class="content_header">Humidity</h2>
+       
+      </div>
+
+      <div class="content_block">
+
+        <h2 class="content_header">CO2</h2>
+
+      </div>
+
+      <div class="content_block">
+
+        <h2 class="content_header">Particles</h2>
+
+      </div>
+
+      <div class="content_block">
+
+        <h2 class="content_header">Dust</h2>
+
+      </div>
+
+    </div>
+
+  </body>
+</html>
