@@ -9,7 +9,7 @@
 // Documentation for solution: https://www.amcharts.com/docs/v5/getting-started/root-element/
 am5.ready(function() {
 
-    var root = am5.Root.new("temp_graph");
+    var root = am5.Root.new("humid_graph");
     var chart = root.container.children.push(
     am5xy.XYChart.new(root, {
         panX: true,
@@ -69,10 +69,10 @@ yRenderer.labels.template.setAll({
 // Documentation: https://www.amcharts.com/docs/v5/charts/xy-chart/series/line-series/
 var series = chart.series.push(
     am5xy.LineSeries.new(root, {
-      name: "Series",
+      name: "Humidity_Series",
       xAxis: xAxis,
       yAxis: yAxis,
-      valueYField: "temp",
+      valueYField: "humidity",
       valueXField: "js_timestamp"
     })
   );
@@ -99,7 +99,7 @@ var series = chart.series.push(
   //}));
 
   yAxis.children.moveValue(am5.Label.new(root, { 
-    text: "Temperature (C˚)", 
+    text: "Humidity (%)", 
     rotation: -90, 
     y: am5.p50, 
     centerX: am5.p50,
@@ -117,7 +117,7 @@ xAxis.children.push(am5.Label.new(root, {
 
 //console.log(graph_data);
 
-series.data.setAll(temp_data_to_graph);
+series.data.setAll(humidity_data_to_graph);
 
 
 }); // closing ready function
