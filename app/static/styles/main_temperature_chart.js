@@ -54,6 +54,16 @@ xRenderer.ticks.template.setAll({
 });
 */
 
+var xRenderer = xAxis.get("renderer");
+xRenderer.labels.template.setAll({
+  fill: am5.Color.fromCSS("rgba(255, 255, 255, 1)")
+});
+
+var yRenderer = yAxis.get("renderer");
+yRenderer.labels.template.setAll({
+  fill: am5.Color.fromCSS("rgba(255, 255, 255, 1)")
+});
+
 // Adding series
 // selected line series
 // Documentation: https://www.amcharts.com/docs/v5/charts/xy-chart/series/line-series/

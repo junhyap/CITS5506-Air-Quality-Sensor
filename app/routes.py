@@ -108,9 +108,59 @@ def main_dash():
 @app.route('/main_temperature')
 def main_temp():
     page = request.args.get("page", 1, type=int)
-    per_page = min(request.args.get("per_page", 20, type=int), 100)
+    per_page = min(request.args.get("per_page", 20000, type=int), 100)
     data = AirQuality.to_collection_dict(
         AirQuality.query, page, per_page, "api.get_airqualitys"
     )
 
     return render_template('main_temperature.html', main_temperature_data = data['items'])
+
+@app.route('/main_humidity')
+def main_humid():
+    page = request.args.get("page", 1, type=int)
+    per_page = min(request.args.get("per_page", 20000, type=int), 100)
+    data = AirQuality.to_collection_dict(
+        AirQuality.query, page, per_page, "api.get_airqualitys"
+    )
+
+    return render_template('main_humidity.html', main_humidity_data = data['items'])
+
+@app.route('/main_co2')
+def main_co2():
+    page = request.args.get("page", 1, type=int)
+    per_page = min(request.args.get("per_page", 20000, type=int), 100)
+    data = AirQuality.to_collection_dict(
+        AirQuality.query, page, per_page, "api.get_airqualitys"
+    )
+
+    return render_template('main_co2.html', main_co2_data = data['items'])
+
+@app.route('/main_particles')
+def main_part():
+    page = request.args.get("page", 1, type=int)
+    per_page = min(request.args.get("per_page", 20000, type=int), 100)
+    data = AirQuality.to_collection_dict(
+        AirQuality.query, page, per_page, "api.get_airqualitys"
+    )
+
+    return render_template('main_particles.html', main_particles_data = data['items'])
+
+@app.route('/main_dust')
+def main_dust():
+    page = request.args.get("page", 1, type=int)
+    per_page = min(request.args.get("per_page", 20000, type=int), 100)
+    data = AirQuality.to_collection_dict(
+        AirQuality.query, page, per_page, "api.get_airqualitys"
+    )
+
+    return render_template('main_dust.html', main_dust_data = data['items'])
+
+@app.route('/main_settings')
+def main_set():
+    page = request.args.get("page", 1, type=int)
+    per_page = min(request.args.get("per_page", 20000, type=int), 100)
+    data = AirQuality.to_collection_dict(
+        AirQuality.query, page, per_page, "api.get_airqualitys"
+    )
+
+    return render_template('main_settings.html', main_settings_data = data['items'])
