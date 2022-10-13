@@ -98,17 +98,17 @@ def main_paige():
 @app.route('/main_dashboard')
 def main_dash():
     page = request.args.get("page", 1, type=int)
-    per_page = min(request.args.get("per_page", 20, type=int), 100)
+    per_page = min(request.args.get("per_page", 20000, type=int), 20000)
     data = AirQuality.to_collection_dict(
         AirQuality.query, page, per_page, "api.get_airqualitys"
     )
 
-    return render_template('main_dashboard.html', airquality = data['items'][0:5])
+    return render_template('main_dashboard.html', airquality = data['items'])
 
 @app.route('/main_temperature')
 def main_temp():
     page = request.args.get("page", 1, type=int)
-    per_page = min(request.args.get("per_page", 20000, type=int), 100)
+    per_page = min(request.args.get("per_page", 20000, type=int), 20000)
     data = AirQuality.to_collection_dict(
         AirQuality.query, page, per_page, "api.get_airqualitys"
     )
@@ -118,7 +118,7 @@ def main_temp():
 @app.route('/main_humidity')
 def main_humid():
     page = request.args.get("page", 1, type=int)
-    per_page = min(request.args.get("per_page", 20000, type=int), 100)
+    per_page = min(request.args.get("per_page", 20000, type=int), 20000)
     data = AirQuality.to_collection_dict(
         AirQuality.query, page, per_page, "api.get_airqualitys"
     )
@@ -128,7 +128,7 @@ def main_humid():
 @app.route('/main_co2')
 def main_co2():
     page = request.args.get("page", 1, type=int)
-    per_page = min(request.args.get("per_page", 20000, type=int), 100)
+    per_page = min(request.args.get("per_page", 20000, type=int), 20000)
     data = AirQuality.to_collection_dict(
         AirQuality.query, page, per_page, "api.get_airqualitys"
     )
@@ -138,7 +138,7 @@ def main_co2():
 @app.route('/main_particles')
 def main_part():
     page = request.args.get("page", 1, type=int)
-    per_page = min(request.args.get("per_page", 20000, type=int), 100)
+    per_page = min(request.args.get("per_page", 20000, type=int), 20000)
     data = AirQuality.to_collection_dict(
         AirQuality.query, page, per_page, "api.get_airqualitys"
     )
@@ -148,7 +148,7 @@ def main_part():
 @app.route('/main_dust')
 def main_dust():
     page = request.args.get("page", 1, type=int)
-    per_page = min(request.args.get("per_page", 20000, type=int), 100)
+    per_page = min(request.args.get("per_page", 20000, type=int), 20000)
     data = AirQuality.to_collection_dict(
         AirQuality.query, page, per_page, "api.get_airqualitys"
     )
@@ -158,7 +158,7 @@ def main_dust():
 @app.route('/main_settings')
 def main_set():
     page = request.args.get("page", 1, type=int)
-    per_page = min(request.args.get("per_page", 20000, type=int), 100)
+    per_page = min(request.args.get("per_page", 20000, type=int), 20000)
     data = AirQuality.to_collection_dict(
         AirQuality.query, page, per_page, "api.get_airqualitys"
     )
