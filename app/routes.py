@@ -9,11 +9,11 @@ from flask import jsonify, request, url_for, redirect
 
 
 @app.route("/")
-@app.route("/index")
+@app.route("/dashboard")
 def index():
     user = {"username": "Admin"}
 
-    return render_template("index.html", title="Home", user=user)
+    return render_template("main_dashboard.html", title="Home", user=user)
 
 
 @app.route('/post_user', methods=['POST'])
@@ -157,10 +157,12 @@ def main_dust():
 
 @app.route('/main_settings')
 def main_set():
-    page = request.args.get("page", 1, type=int)
-    per_page = min(request.args.get("per_page", 20000, type=int), 100)
-    data = AirQuality.to_collection_dict(
-        AirQuality.query, page, per_page, "api.get_airqualitys"
-    )
+    #page = request.args.get("page", 1, type=int)
+    #per_page = min(request.args.get("per_page", 20000, type=int), 100)
+    #data = AirQuality.to_collection_dict(
+    #    AirQuality.query, page, per_page, "api.get_airqualitys"
+    #)
 
-    return render_template('main_settings.html', main_settings_data = data['items'])
+    airqualityList = AirQuality.query.filter(AirQuality.timestamp.like('%2022-%')).limit(10).all()
+
+    return render_template('main_settings.html', main_settings_data = airqualityList)

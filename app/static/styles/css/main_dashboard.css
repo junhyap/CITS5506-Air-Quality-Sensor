@@ -39,36 +39,3 @@ body {
     li a:hover {
         background-color: #111;
     }
-    
-    .slide_div {
-    position: relative;
-    left: -100%;    /* left set to 0 so document loads in on 'About' by defualt */
-    width: 700%;
-    transition: left 0.4s;
-    display: flex;
-    flex-flow: row nowrap;
-    }
-    
-    .content_block {
-    height: 100%;
-    padding: 2rem;
-    text-align: center;
-    display: flex;
-    flex: 1;
-    flex-flow: column nowrap;
-    align-items: center;
-    justify-content: center;
-    }
-    
-    .content_header {
-    font-weight: 500;
-    margin: 2rem 0 1rem;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    text-transform: uppercase;
-    }
-    
-    .content {
-    margin-bottom: 3rem;
-    max-width: 70%;
-    }
-    
