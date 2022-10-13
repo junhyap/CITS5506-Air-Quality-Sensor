@@ -55,15 +55,18 @@ yRenderer.labels.template.setAll({
 // Adding series
 // selected line series
 // Documentation: https://www.amcharts.com/docs/v5/charts/xy-chart/series/line-series/
+/*
 var series = chart.series.push(
     am5xy.LineSeries.new(root, {
       name: "Series",
       xAxis: xAxis,
       yAxis: yAxis,
       valueYField: "temp",
-      valueXField: "js_timestamp"
+      valueXField: "js_timestamp",
+      tooltip: am5.Tooltip.new(root, {})
     })
   );
+  */
 
   // Adding labels to the graph axes, setting the y label to vertical 
   yAxis.children.moveValue(am5.Label.new(root, { 
@@ -82,7 +85,53 @@ xAxis.children.push(am5.Label.new(root, {
 }));
 
 
-series.data.setAll(temp_data_to_graph);
+//series.get("tooltip").label.set("text", "{valueX.formatDate()}: {valueY}")
+//  series.data.setAll(temp_data_to_graph);
+  
+//series.data.setAll(temp_data_to_graph);
+// Create series
+function createSeries(name, field) {
+  var series = chart.series.push( 
+    am5xy.LineSeries.new(root, { 
+      name: name,
+      xAxis: xAxis, 
+      yAxis: yAxis, 
+      valueYField: field, 
+      valueXField: "js_timestamp",
+      tooltip: am5.Tooltip.new(root, {})
+    }) 
+  );
+  
+  series.bullets.push(function() {
+    // create the circle first
+    var circle = am5.Circle.new(root, {
+      radius: 1,
+      stroke: series.get("fill"),
+      strokeWidth: 2,
+      interactive: true, //required to trigger the state on hover
+      fill: am5.color(0xffffff)
+    });
+
+    circle.states.create('hover', {
+      scale: 2
+    });
+
+    return am5.Bullet.new(root, {
+      sprite: circle
+    });
+  });
+  
+  series.get("tooltip").label.set("text", "{valueX.formatDate()}: {valueY}")
+  series.data.setAll(temp_data_to_graph);
+}
+
+createSeries("Series #1", "temp");
+
+// Add cursor
+chart.set("cursor", am5xy.XYCursor.new(root, {
+  behavior: "zoomXY",
+  xAxis: xAxis
+}));
 
 
 }); // closing ready function
