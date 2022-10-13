@@ -7,10 +7,16 @@
       
     <title>Particles</title>      
 
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/main.css')}}">
-    <script src="{{url_for('static', filename='styles/main.js')}}"></script>
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
 
-      
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/css/main_particles.css')}}">
+  
+    <script type="text/javascript" src="{{url_for('static', filename='styles/js/main_particles_chart.js')}}"></script>
+    <script type="text/javascript">
+        particles_data_to_graph = {{main_particles_data|tojson}}
+    </script>
+
   </head>
         
   <body>   
@@ -31,53 +37,7 @@
 
     </div>
     
-    <div id="main_text" class="slide_div">
-
-      <div class="content_block">
-
-        <h2 class="content_header">Settings</h2>
-
-
-      </div>
-
-      <div class="content_block">
-
-        <h2 class="content_header">Dashboard</h2>
-
-
-      </div>
-
-
-      <div class="content_block">
-        <h2 class="content_header">Temperature</h2>
-        <p class="content">(left blank)</p>
-      </div>
-
-      <div class="content_block">
-       
-        <h2 class="content_header">Humidity</h2>
-       
-      </div>
-
-      <div class="content_block">
-
-        <h2 class="content_header">CO2</h2>
-
-      </div>
-
-      <div class="content_block">
-
-        <h2 class="content_header">Particles</h2>
-
-      </div>
-
-      <div class="content_block">
-
-        <h2 class="content_header">Dust</h2>
-
-      </div>
-
-    </div>
+    <div id="particles_graph"></div>
 
   </body>
 </html>

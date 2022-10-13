@@ -18,6 +18,7 @@ am5.ready(function() {
     })
 );
 
+// setting scroll bars in the X and Y direction
 chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal" }));
 chart.set("scrollbarY", am5.Scrollbar.new(root, { orientation: "vertical" }));
 
@@ -40,20 +41,7 @@ var xAxis = chart.xAxes.push(
     })
   );
 
-/*
-var xRenderer = xAxis.get("renderer");
-xRenderer.grid.template.setAll({
-  stroke: am5.Color.fromCSS("rgba(255, 255, 255, 1)")
-});
-*/
-
-/*
-var xRenderer = xAxis.get("renderer");
-xRenderer.ticks.template.setAll({
-  color: am5.Color.fromCSS("rgba(255, 255, 255, 1)")
-});
-*/
-
+// Setting the graph labels to white
 var xRenderer = xAxis.get("renderer");
 xRenderer.labels.template.setAll({
   fill: am5.Color.fromCSS("rgba(255, 255, 255, 1)")
@@ -77,27 +65,7 @@ var series = chart.series.push(
     })
   );
 
-  /*
-  var series2 = chart.series.push(
-    am5xy.StepLineSeries.new(root, {
-      name: "Series2",
-      xAxis: xAxis,
-      yAxis: yAxis,
-      valueYField: "temperature",
-      valueXField: "time",
-      //noRisers: true,
-      //fill: am5.color(0x095256),
-      //stepWidth: am5.percent(50),
-      //locationX: 0.25
-    })
-  );
-  */
-
-  //xAxis.axisHeader.children.push(am5.Label.new(root, {
-  //  text: "Temperature (C˚)",
-  //  fontWeight: "500",
-  //}));
-
+  // Adding labels to the graph axes, setting the y label to vertical 
   yAxis.children.moveValue(am5.Label.new(root, { 
     text: "Temperature (C˚)", 
     rotation: -90, 
@@ -113,9 +81,6 @@ xAxis.children.push(am5.Label.new(root, {
     fill: am5.Color.fromCSS("rgba(255, 255, 255, 1)")
 }));
 
-//var graph_data = document.getElementById("graph_data").textContent;
-
-//console.log(graph_data);
 
 series.data.setAll(temp_data_to_graph);
 

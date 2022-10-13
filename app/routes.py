@@ -157,12 +157,10 @@ def main_dust():
 
 @app.route('/main_settings')
 def main_set():
-    #page = request.args.get("page", 1, type=int)
-    #per_page = min(request.args.get("per_page", 20000, type=int), 100)
-    #data = AirQuality.to_collection_dict(
-    #    AirQuality.query, page, per_page, "api.get_airqualitys"
-    #)
+    page = request.args.get("page", 1, type=int)
+    per_page = min(request.args.get("per_page", 20000, type=int), 100)
+    data = AirQuality.to_collection_dict(
+        AirQuality.query, page, per_page, "api.get_airqualitys"
+    )
 
-    airqualityList = AirQuality.query.filter(AirQuality.timestamp.like('%2022-%')).limit(10).all()
-
-    return render_template('main_settings.html', main_settings_data = airqualityList)
+    return render_template('main_settings.html', main_settings_data = str(airqualityList))

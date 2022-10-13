@@ -9,7 +9,7 @@
 // Documentation for solution: https://www.amcharts.com/docs/v5/getting-started/root-element/
 am5.ready(function() {
 
-    var root = am5.Root.new("humidity_graph");
+    var root = am5.Root.new("co2_graph");
     var chart = root.container.children.push(
     am5xy.XYChart.new(root, {
         panX: true,
@@ -28,6 +28,7 @@ var yAxis = chart.yAxes.push(
       renderer: am5xy.AxisRendererY.new(root, {})
     })
   );
+
 
 // Axis renderer
 // selected DateAxis
@@ -59,14 +60,14 @@ var series = chart.series.push(
       name: "Series",
       xAxis: xAxis,
       yAxis: yAxis,
-      valueYField: "humidity",
+      valueYField: "eco2",
       valueXField: "js_timestamp"
     })
   );
 
   // Adding labels to the graph axes, setting the y label to vertical 
   yAxis.children.moveValue(am5.Label.new(root, { 
-    text: "Humidity (%)", 
+    text: "CO2 (ppm)", 
     rotation: -90, 
     y: am5.p50, 
     centerX: am5.p50,
@@ -81,7 +82,7 @@ xAxis.children.push(am5.Label.new(root, {
 }));
 
 
-series.data.setAll(humidity_data_to_graph);
+series.data.setAll(co2_data_to_graph);
 
 
 }); // closing ready function
