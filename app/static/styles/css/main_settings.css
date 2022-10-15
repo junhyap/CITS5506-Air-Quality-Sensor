@@ -40,6 +40,19 @@ body {
         background-color: #111;
     }
 
+    .grid-container {
+      display: grid;
+      /* grid-template-columns: auto auto auto; */
+      gap: 50px 5px;
+    }
+
+    .item1 {
+      grid-column-start: 1;
+      grid-column-end: 6;
+    }
+
+
+
 
 
       

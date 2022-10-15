@@ -30,47 +30,88 @@
       </ul> 
 
     </div>
+
+    {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
     
+
     <form method="POST" action="/post_settings">
-      <label>Lower Temperature</label>
-      <input id  = "temperature_lower_bound" name ="temperature_lower_bound" type="number"
-      value=0>
-  
-      <label>Upper Temperature</label>
-      <input id  = "temperature_upper_bound" name ="temperature_upper_bound" type="number"
-      value=100>
 
-      <label>Lower Humidity</label>
-      <input id  = "humidity_lower_bound" name ="humidity_lower_bound" type="number"
-      value=0>
-  
-      <label>Upper Humidity</label>
-      <input id  = "humidity" name ="humidity" type="number"
-      value=0>
-  
-      <label>Lower </label>
-      <input id  = "particles" name ="particles" type="number"
-      value=100>
-  
-      <label>Warning Level </label>
-      <input id  = "eco2" name ="eco2" type="number"
-      value=1000>
-  
-      <label>Alert Level </label>
-      <input id  = "tvoc" name ="tvoc" type="number"
-      value=2000>
+      <div class="grid-container">
 
-      <label>Warning Level </label>
-      <input id  = "tvoc" name ="eco2" type="number"
-      value=5>
+      <div class="item1"></div>
+
+      <div class="grid-item">
+        <label>Lower Temperature</label>
+        <input id  = "temperature_lower_bound" name ="temperature_lower_bound" type="number"
+        value=0>
+      </div>
+
+      <div class="grid-item">
+        <label>Upper Temperature</label>
+        <input id  = "temperature_upper_bound" name ="temperature_upper_bound" type="number"
+        value=100>
+      </div>
+
+      <div class="grid-item">
+        <label>Lower Humidity</label>
+        <input id  = "humidity_lower_bound" name ="humidity_lower_bound" type="number"
+        value=0>
+      </div>
   
-      <label>Alert Level </label>
-      <input id  = "tvoc" name ="tvoc" type="number"
-      value=10>
+      <div class="grid-item">
+        <label>Upper Humidity</label>
+        <input id  = "humidity_upper_bound" name ="humidity_upper_bound" type="number"
+        value=0>
+     </div>
   
-      <input type="submit">
+     <div class="grid-item">
+        <label>Lower Particles</label>
+        <input id  = "particles_lower_bound" name ="particles_lower_bound" type="number"
+        value=0>
+      </div>
+
+      <div class="grid-item">
+        <label>Upper Particles </label>
+        <input id  = "particles_upper_bound" name ="particles_upper_bound" type="number"
+        value=100>
+      </div>
+    
+      <div class="grid-item">
+        <label>CO2 Warning Level </label>
+        <input id  = "co2_lower_bound" name ="co2_lower_bound" type="number"
+        value=1000>
+      </div>
+    
+      <div class="grid-item">
+        <label>CO2 Alert Level </label>
+        <input id  = "co2_upper_bound" name ="co2_upper_bound" type="number"
+        value=2000>
+      </div>
+
+      <div class="grid-item">
+        <label>Tvoc Warning Level </label>
+        <input id  = "tvoc_lower_bound" name ="tvoc_lower_bound" type="number"
+        value=5>
+      </div>
+    
+      <div class="grid-item">
+        <label>Tvoc Alert Level </label>
+        <input id  = "tvoc_upper_bound" name ="tvoc_upper_bound" type="number"
+        value=10>
+      </div>
   
-  </form>
+    
+    </div>
+
+    <input type="submit">
+  
+    </form>
+
+  <!--<div>{{settings_data.temperature_lower_bound}}</div> -->
 
   </body>
 </html>
