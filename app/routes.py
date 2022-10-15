@@ -37,18 +37,6 @@ def post_user():
     db.session.commit()  
     
     return redirect(url_for('dashboard'))
-    
-
-@app.route('/dashboard')
-def dashboard():
-
-    page = request.args.get("page", 1, type=int)
-    per_page = min(request.args.get("per_page", 20, type=int), 100)
-    data = AirQuality.to_collection_dict(
-        AirQuality.query, page, per_page, "api.get_airqualitys"
-    )
-
-    return render_template('graph.html', airquality = data['items'])
 
 
 @app.route('/charts')
