@@ -5,16 +5,17 @@
       
     <meta charset="utf-8"> 
       
-    <title>{% block title %}{% endblock %}</title>      
+    <title>Dashboard</title>      
 
     <link rel="stylesheet" href="{{url_for('static', filename='styles/css/main_dashboard.css')}}">
     <script src="{{url_for('static', filename='styles/js/main_dashboard.js')}}"></script>
 
-    {% block javascriptsLink %}{% endblock javascriptsLink %}
+      
   </head>
         
-  <body>  
-    <div class='heading'>{% block heading %}{% endblock %}</div>          
+  <body>   
+      
+    <div class='heading'>Dashboard</div>          
     
     <div style="position: sticky; top: 0; z-index: 4;">   
       
@@ -25,13 +26,12 @@
             <li><a href="/main_co2">CO2</a></li>
             <li><a href="/main_particles">Particles</a></li>
             <li><a href="/main_dust">Dust</a></li>
-            <li style="float: right;"><a href="/main_settings"><i class="fa fa-gear" style="font-size:20px;"></i></a></li>
+            <li style="float: right;"><a href="/main_settings">Settings</a></li>
           </ul> 
 
     </div>
 
-    {% block content %}{% endblock %}
+    <div>{{airquality}}</div>>
 
-    {% block javascripts %}{% endblock javascripts %}
   </body>
-  </html>
+</html>

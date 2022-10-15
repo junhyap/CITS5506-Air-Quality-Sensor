@@ -1,0 +1,77 @@
+{% extends "base.html" %} 
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block javascriptsLink %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+{% endblock javascriptsLink %}
+
+
+{% block heading %}Dashboard{% endblock %}
+
+
+{% block content %}     
+
+    <div class="centered">
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+
+          {% for category, message in messages %}
+          <div class = "alert alert-{{category}} alert-dismissible">
+            <span>
+              {{message}}
+            </span>
+            <button type ="button" class="close" data-dismiss="alert" aria-label ="Close">
+              <span aria-hidden = "true"> &times;</span>
+            </button>
+
+          </div>
+          {% endfor %}
+      
+        {% endif %}
+      {% endwith %}
+
+      <div class ="container">
+        <div class="row row-tiles">
+          <div class="column-4 project-1 col-md-4">
+            <h2 class="project-text parm temp">{{temp}} C</h2>
+          </div>
+            
+          <div class="column-4 project-1 col-md-4">
+              <h2 class="project-text">{{humidity}} %</h2>
+          </div>
+            
+          <div class="column-4 project-1 col-md-4">
+              <h2 class="project-text">{{particles}} µM</h2>
+          </div>
+        </div>
+
+        <div class="row row-tiles">
+          <div class="column-4 project-1 col-md-6">
+            <h2 class="project-text" value={{eco2}} >{{eco2}} ppm</h2>
+            <div class="eco2Class" id ="eco2" style="display: none;">The particle value should not be greater than 10</div>
+          </div>
+    
+          <div class="column-4 project-1 col-md-6">
+            <h2 class="project-text">{{tvoc}} tVOC</h2>
+          </div>
+        </div>  
+
+      </div>
+    </div>
+  {% endblock %}
+
+  {% block javascripts %}
+  <script>
+    if({{eco2}} == 0){
+      $(".eco2Class").css("display", "block");
+    }  
+    </script>
+  
+  {% endblock javascripts %}

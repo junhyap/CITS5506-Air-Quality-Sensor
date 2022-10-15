@@ -1,0 +1,80 @@
+body {
+    background-color: rgb(31, 40, 62) !important; 
+    color: white !important;
+    margin: 0; 
+    font-family: Lato,sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    overflow-x: hidden;      
+    }
+    
+    .heading {
+    text-align: center;
+    padding: 15px;
+    font-size: 35px;
+    font-family: Lato,sans-serif;
+    background-color: rgb(26, 32, 53);
+    }
+    
+    ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333 !important;
+    }
+    
+    li {
+    float: left;
+    }
+
+    li a {
+        display: block;
+        color: rgb(255, 255, 255) !important;
+        text-align: center !important;
+        padding: 14px 16px !important;
+        text-decoration: none !important;
+    }
+
+    li a:hover {
+        background-color: #111 !important;
+    }
+
+    .column-4 {
+        float: left;
+        width: 25%;
+        padding: 20px;
+        margin: 25px;
+        height: 250px;
+      }
+          
+      .project-text{
+        font-size: 80px;
+        text-align: center;
+        color: #58584f;
+       
+      }
+
+      .eco2Class{
+        display: none;
+        text-align: center;
+        color: #ed1414;
+
+      }
+
+      /*----- added css------- */
+      .centered { background: black; margin: 0 auto; width: 80%; }
+
+      .alert-danger {
+        color: #ececec !important;
+        background-color: #b43737 !important;
+        border-color: #ebccd1 !important;
+      }
+      .alert-success {
+        color: #dedede !important;
+        background-color: #36960e !important;
+        border-color: #d6e9c6 !important;
+      }
+      .row-tiles{
+        display : flex;
+      }

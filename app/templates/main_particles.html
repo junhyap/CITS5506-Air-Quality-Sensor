@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    
+  <head>
+      
+    <meta charset="utf-8"> 
+      
+    <title>Particles</title>      
+
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/css/main_particles.css')}}">
+  
+    <script type="text/javascript" src="{{url_for('static', filename='styles/js/main_particles_chart.js')}}"></script>
+    <script type="text/javascript">
+        particles_data_to_graph = {{main_particles_data|tojson}}
+    </script>
+
+  </head>
+        
+  <body>   
+      
+    <div class='heading'>Particles</div>          
+    
+    <div style="position: sticky; top: 0; z-index: 4;">   
+      
+      <ul>  
+        <li><a href="/main_dashboard">Dashboard</a></li>
+        <li><a href="/main_temperature">Temperature</a></li>
+        <li><a href="/main_humidity">Humidity</a></li>
+        <li><a href="/main_co2">CO2</a></li>
+        <li><a href="/main_particles">Particles</a></li>
+        <li><a href="/main_dust">Dust</a></li>
+        <li style="float: right;"><a href="/main_settings">Settings</a></li>
+      </ul> 
+
+    </div>
+    
+    <div id="particles_graph"></div>
+
+  </body>
+</html>

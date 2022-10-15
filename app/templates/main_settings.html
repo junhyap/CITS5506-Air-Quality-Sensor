@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    
+  <head>
+      
+    <meta charset="utf-8"> 
+      
+    <title>Settings</title>      
+
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/css/main_settings.css')}}">
+    <script src="{{url_for('static', filename='styles/js/main_settings.js')}}"></script>
+
+      
+  </head>
+        
+  <body>   
+      
+    <div class='heading'>Settings</div>          
+    
+    <div style="position: sticky; top: 0; z-index: 4;">   
+      
+      <ul>  
+        <li><a href="/main_dashboard">Dashboard</a></li>
+        <li><a href="/main_temperature">Temperature</a></li>
+        <li><a href="/main_humidity">Humidity</a></li>
+        <li><a href="/main_co2">CO2</a></li>
+        <li><a href="/main_particles">Particles</a></li>
+        <li><a href="/main_dust">Dust</a></li>
+        <li style="float: right;"><a href="/main_settings">Settings</a></li>
+      </ul> 
+
+    </div>
+
+    {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+    
+
+    <form method="POST" action="/post_settings">
+
+      <div class="grid-container">
+
+      <div class="item1"></div>
+
+      <div class="grid-item">
+        <label>Lower Temperature</label>
+        <input id  = "temperature_lower_bound" name ="temperature_lower_bound" type="number"
+        value=0>
+      </div>
+
+      <div class="grid-item">
+        <label>Upper Temperature</label>
+        <input id  = "temperature_upper_bound" name ="temperature_upper_bound" type="number"
+        value=100>
+      </div>
+
+      <div class="grid-item">
+        <label>Lower Humidity</label>
+        <input id  = "humidity_lower_bound" name ="humidity_lower_bound" type="number"
+        value=0>
+      </div>
+  
+      <div class="grid-item">
+        <label>Upper Humidity</label>
+        <input id  = "humidity_upper_bound" name ="humidity_upper_bound" type="number"
+        value=0>
+     </div>
+  
+     <div class="grid-item">
+        <label>Lower Particles</label>
+        <input id  = "particles_lower_bound" name ="particles_lower_bound" type="number"
+        value=0>
+      </div>
+
+      <div class="grid-item">
+        <label>Upper Particles </label>
+        <input id  = "particles_upper_bound" name ="particles_upper_bound" type="number"
+        value=100>
+      </div>
+    
+      <div class="grid-item">
+        <label>CO2 Warning Level </label>
+        <input id  = "co2_lower_bound" name ="co2_lower_bound" type="number"
+        value=1000>
+      </div>
+    
+      <div class="grid-item">
+        <label>CO2 Alert Level </label>
+        <input id  = "co2_upper_bound" name ="co2_upper_bound" type="number"
+        value=2000>
+      </div>
+
+      <div class="grid-item">
+        <label>Tvoc Warning Level </label>
+        <input id  = "tvoc_lower_bound" name ="tvoc_lower_bound" type="number"
+        value=5>
+      </div>
+    
+      <div class="grid-item">
+        <label>Tvoc Alert Level </label>
+        <input id  = "tvoc_upper_bound" name ="tvoc_upper_bound" type="number"
+        value=10>
+      </div>
+  
+    
+    </div>
+
+    <input type="submit">
+  
+    </form>
+
+  <!--<div>{{settings_data.temperature_lower_bound}}</div> -->
+
+  </body>
+</html>

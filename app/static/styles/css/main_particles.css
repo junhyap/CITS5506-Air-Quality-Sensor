@@ -1,0 +1,49 @@
+body {
+    background-color: rgb(31, 40, 62);
+    color: white;
+    margin: 0; 
+    font-family: Lato,sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    overflow-x: hidden;      
+    }
+    
+    .heading {
+    text-align: center;
+    padding: 15px;
+    font-size: 35px;
+    font-family: Lato,sans-serif;
+    background-color: rgb(26, 32, 53);
+    }
+    
+    ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    }
+    
+    li {
+    float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: #111;
+    }
+
+    #particles_graph {	
+        width		: 100%;
+         height		: 500px;
+         background-color: rgb(31, 40, 62);
+         color: white;
+     } 
+    
