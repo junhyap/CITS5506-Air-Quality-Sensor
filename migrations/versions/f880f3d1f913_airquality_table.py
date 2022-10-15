@@ -53,4 +53,5 @@ def upgrade_settings():
     sa.Column('tvoc_upper_bound', sa.Integer(), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_index(op.f('ix_settings_id'), 'settings', ['id'], unique=True)
     # ### end Alembic commands ###
