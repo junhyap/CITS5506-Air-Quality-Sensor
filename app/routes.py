@@ -2,6 +2,7 @@ from app.api import airquality
 from flask import render_template
 from app import app
 from app.models import AirQuality
+from app.models import Settings
 from alembic import op
 from app import db
 from flask import jsonify, request, url_for, redirect
@@ -156,11 +157,52 @@ def main_dust():
     return render_template('main_dust.html', main_dust_data = data['items'])
 
 @app.route('/main_settings')
-def main_set():
-    page = request.args.get("page", 1, type=int)
-    per_page = min(request.args.get("per_page", 20000, type=int), 20000)
-    data = AirQuality.to_collection_dict(
-        AirQuality.query, page, per_page, "api.get_airqualitys"
-    )
+def main_settings():
+    settings = Settings.query.filter_by(id=0).first()
+    return render_template('main_settings.html', main_settings_data=settings)
 
-    return render_template('main_settings.html', main_settings_data = str(airqualityList))
+
+@app.route('/post_settings', methods=['POST'])
+def post_settings():
+
+    data = request.form
+
+    settings = Settings.query.filter_by(id=0).first()
+    # temperature bounds
+    settings.temperature_lower_bound = form['temperature_lower_bound']
+    settings.temperature_lower_bound = form['temperature_upper_bound']
+    # humidity bounds
+    settings.humidity_lower_bound = form['humidity_lower_bound']
+    settings.humidity_upper_bound = form['humidity_upper_bound']
+    # particles bounds
+    settings.particles_lower_bound = form['particles_lower_bound']
+    settings.particles_lower_bound = form['particles_upper_bound']
+    # co2 bounds
+    settings.co2_lower_bound = form['co2_lower_bound']
+    settings.co2_lower_bound = form['co2_upper_bound']
+    # tvoc bounds
+    settings.co2_lower_bound = form['tvoc_lower_bound']
+    settings.co2_lower_bound = form['tvoc_upper_bound']
+
+    db.session.commit()
+
+    return redirect(url_for('main_settings'))
+
+
+"""
+    @app.route('/new', methods = ['GET', 'POST'])
+def new():
+   if request.method == 'POST':
+      if not request.form['name'] or not request.form['city'] or not request.form['addr']:
+         flash('Please enter all the fields', 'error')
+      else:
+         student = students(request.form['name'], request.form['city'],
+            request.form['addr'], request.form['pin'])
+         
+         db.session.add(student)
+         db.session.commit()
+         
+         flash('Record was successfully added')
+         return redirect(url_for('show_all'))
+   return render_template('new.html')
+"""

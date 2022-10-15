@@ -7,8 +7,8 @@
       
     <title>Settings</title>      
 
-    <link rel="stylesheet" href="{{url_for('static', filename='styles/main.css')}}">
-    <script src="{{url_for('static', filename='styles/main.js')}}"></script>
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/css/main_settings.css')}}">
+    <script src="{{url_for('static', filename='styles/js/main_settings.js')}}"></script>
 
       
   </head>
@@ -31,7 +31,46 @@
 
     </div>
     
-    
+    <form method="POST" action="/post_settings">
+      <label>Lower Temperature</label>
+      <input id  = "temperature_lower_bound" name ="temperature_lower_bound" type="number"
+      value=0>
+  
+      <label>Upper Temperature</label>
+      <input id  = "temperature_upper_bound" name ="temperature_upper_bound" type="number"
+      value=100>
+
+      <label>Lower Humidity</label>
+      <input id  = "humidity_lower_bound" name ="humidity_lower_bound" type="number"
+      value=0>
+  
+      <label>Upper Humidity</label>
+      <input id  = "humidity" name ="humidity" type="number"
+      value=0>
+  
+      <label>Lower </label>
+      <input id  = "particles" name ="particles" type="number"
+      value=100>
+  
+      <label>Warning Level </label>
+      <input id  = "eco2" name ="eco2" type="number"
+      value=1000>
+  
+      <label>Alert Level </label>
+      <input id  = "tvoc" name ="tvoc" type="number"
+      value=2000>
+
+      <label>Warning Level </label>
+      <input id  = "tvoc" name ="eco2" type="number"
+      value=5>
+  
+      <label>Alert Level </label>
+      <input id  = "tvoc" name ="tvoc" type="number"
+      value=10>
+  
+      <input type="submit">
+  
+  </form>
 
   </body>
 </html>

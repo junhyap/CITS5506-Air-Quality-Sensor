@@ -39,3 +39,46 @@ body {
     li a:hover {
         background-color: #111;
     }
+
+    .column-4 {
+        float: left;
+        width: 25%;
+        padding: 20px;
+        margin: 25px;
+        height: 250px;
+      }
+    
+      .project-1 {
+        background-color:#b9c8d2;
+      }
+      
+      
+      .project-text{
+        font-size: 80px;
+        text-align: center;
+        color: #58584f;
+       
+      }
+      .eco2Class{
+        display: none;
+        text-align: center;
+        color: #ed1414;
+
+      }
+
+      /*----- added css------- */
+      .centered { background: black; margin: 0 auto; width: 80%; }
+
+      .alert-danger {
+        color: #ececec !important;
+        background-color: #b43737 !important;
+        border-color: #ebccd1 !important;
+      }
+      .alert-success {
+        color: #dedede !important;
+        background-color: #36960e !important;
+        border-color: #d6e9c6 !important;
+      }
+      .row-tiles{
+        display : flex;
+      }
