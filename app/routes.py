@@ -40,14 +40,14 @@ def main_dashboard():
         settings.humidity_lower_bound = 0
         settings.humidity_upper_bound = 100
         # particles bounds
-        settings.particles_lower_bound = 200
-        settings.particles_upper_bound = 300
+        settings.particles_lower_bound = 80
+        settings.particles_upper_bound = 115
         # co2 bounds
-        settings.co2_lower_bound = 1000
+        settings.co2_lower_bound = 1500
         settings.co2_upper_bound = 2000
         # tvoc bounds
-        settings.tvoc_lower_bound = 20
-        settings.tvoc_upper_bound = 40
+        settings.tvoc_lower_bound = 150
+        settings.tvoc_upper_bound = 250
 
         db.session.add(settings)
         db.session.commit()
@@ -58,7 +58,8 @@ def main_dashboard():
     
     if(check):
         airqualityList = AirQuality.query.all()[-2]
-        flash('Displaying Results From {date}'.format(date=list(airqualityList.to_dict().values())[0]))
+
+    flash('Displaying Results From {date}'.format(date=list(airqualityList.to_dict().values())[0].split(".")[0]))
 
     timestamp = airqualityList.timestamp
     if(not timestamp):
