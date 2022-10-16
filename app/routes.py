@@ -9,8 +9,6 @@ from flask import jsonify, request, url_for, redirect, flash
 
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
-@app.route("/")
-
 @app.route('/post_user', methods=['POST'])
 def post_user():
     data = request.form
@@ -24,6 +22,7 @@ def post_user():
     
     return redirect(url_for('dashboard'))
     
+@app.route("/")
 @app.route("/main_dashboard")
 def main_dashboard():
 
@@ -62,11 +61,23 @@ def main_dashboard():
         flash('Displaying Results From {date}'.format(date=list(airqualityList.to_dict().values())[0]))
 
     timestamp = airqualityList.timestamp
+    if(not timestamp):
+        timestamp=0
     temp = airqualityList.temp
+    if(not temp):
+        temp=0
     humidity = airqualityList.humidity
+    if(not humidity):
+        humidity=0
     particles = airqualityList.particles
+    if(not particles):
+        particles=0
     eco2 = airqualityList.eco2
+    if(not eco2):
+        eco2=0
     tvoc = airqualityList.tvoc
+    if(not tvoc):
+        tvoc=0
 
     if temp == 0:
         flash("Air Quality Index for this location is Bad", "danger")

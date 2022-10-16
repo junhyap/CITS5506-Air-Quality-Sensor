@@ -78,3 +78,17 @@ body {
       .row-tiles{
         display : flex;
       }
+
+      .refresh{
+        display: flex;
+        justify-content: center;
+      }
+
+      button.refresh{
+        color: black;
+        margin: 10px
+        border-radius: 15px;
+        margin: 10px;
+      }
+  
+    
