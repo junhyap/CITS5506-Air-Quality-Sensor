@@ -41,13 +41,13 @@ def main_dashboard():
         settings.humidity_upper_bound = 100
         # particles bounds
         settings.particles_lower_bound = 200
-        settings.particles_lower_bound = 300
+        settings.particles_upper_bound = 300
         # co2 bounds
         settings.co2_lower_bound = 1000
-        settings.co2_lower_bound = 2000
+        settings.co2_upper_bound = 2000
         # tvoc bounds
         settings.tvoc_lower_bound = 20
-        settings.tvoc_lower_bound = 40
+        settings.tvoc_upper_bound = 40
 
         db.session.add(settings)
         db.session.commit()
@@ -182,13 +182,13 @@ def post_settings():
             query.humidity_upper_bound = data["humidity_upper_bound"]
             # particles bounds
             query.particles_lower_bound = data["particles_lower_bound"]
-            query.particles_lower_bound = data["particles_upper_bound"]
+            query.particles_upper_bound = data["particles_upper_bound"]
             # co2 bounds
             query.co2_lower_bound = data["co2_lower_bound"]
-            query.co2_lower_bound = data["co2_upper_bound"]
+            query.co2_upper_bound = data["co2_upper_bound"]
             # tvoc bounds
             query.tvoc_lower_bound = data['tvoc_lower_bound']
-            query.tvoc_lower_bound = data['tvoc_upper_bound']
+            query.tvoc_upper_bound = data['tvoc_upper_bound']
 
             db.session.add(query)
             db.session.commit()

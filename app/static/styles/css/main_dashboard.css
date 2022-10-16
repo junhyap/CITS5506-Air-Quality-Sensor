@@ -51,7 +51,7 @@ body {
       .project-text{
         font-size: 80px;
         text-align: center;
-        color: #58584f;
+        color: #ffffff;
        
       }
 
@@ -89,6 +89,13 @@ body {
         margin: 10px
         border-radius: 15px;
         margin: 10px;
+      }
+
+      .settings{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
       }
   
     
