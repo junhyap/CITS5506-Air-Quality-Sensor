@@ -79,10 +79,64 @@ def main_dashboard():
     if(not tvoc):
         tvoc=0
 
-    if temp == 0:
-        flash("Air Quality Index for this location is Bad", "danger")
+    alert_count = 0
+    warning_count = 0
+    low_count = 0 
+
+    # if the temperature is outside of the range flash a warning
+    if (temp >= settings.temperature_upper_bound):
+        warning_count+=1
+
+    if (temp <= settings.temperature_lower_bound):
+        low_count+=1
+    
+    # if the humidity is outside of the range flash a warning
+    if (humidity >= settings.humidity_upper_bound):
+        warning_count+=1
+
+    if (humidity <= settings.humidity_lower_bound):
+        low_count+=1
+
+    # if the particles is outside of the range flash a warning
+    if (particles >= settings.particles_upper_bound):
+        alert_count+=1
+
+    # if the particles is outside of the range flash an alert
+    elif(particles >= settings.particles_lower_bound):
+        warning_count+=1
+
+    # if the co2 is outside of the range flash a warning
+    if (eco2 >= settings.co2_upper_bound):
+        alert_count+=1
+
+    # if the co2 is outside of the range flash an alert
+    elif(eco2 >= settings.co2_lower_bound):
+        warning_count+=1
+
+    # if the tvoc is outside of the range flash a warning
+    if (tvoc >= settings.tvoc_upper_bound):
+        alert_count+=1
+
+    # if the tvoc is outside of the range flash an alert
+    elif(tvoc >= settings.tvoc_lower_bound):
+        warning_count+=1
+
+    # flash a low temp or humidity warning
+    if(low_count != 0):
+        flash("Low Temp / Humidity Warning", 'low')
+
+    if(warning_count == 0 and alert_count == 0 and low_count == 0):
+        flash("The Air Quality is Good", 'success')
+
+    elif(warning_count != 0 and alert_count != 0):
+        flash("There is {alerts} alert(s) and {warnings} warning(s)".format(alerts=alert_count, warnings=warning_count), 'danger')
+
+    elif(alert_count == 0):
+        flash("There is {warnings} warning(s)".format(warnings=warning_count), 'warning')
+
     else:
-        flash("Air Quality Index for this location is Good", "success")
+        flash("There is {alerts} alert(s)".format(alerts=alert_count),'danger')
+   
 
     return render_template('main_dashboard.html', 
     timestamp=timestamp,temp = temp, humidity = humidity, 
