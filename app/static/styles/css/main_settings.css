@@ -51,6 +51,33 @@ body {
       grid-column-end: 6;
     }
 
+    .submit_button {
+      display: flex;
+      justify-content: center;
+    }
+
+    .button {
+      display: flex;
+      justify-content: center;
+      /*background-color: #4CAF50; */
+      /*border: none;*/
+      color: black;
+      padding: 14px 40px;
+      text-align: center;
+      text-decoration: none;
+      /*display: inline-block;*/
+      font-size: 1.3rem;
+      margin: 50px 4px;
+      cursor: pointer;
+    }
+
+    .alert {
+      display: flex;
+      justify-content: center;
+    }
+
+
+
 
 
 

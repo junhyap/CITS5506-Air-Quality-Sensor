@@ -11,7 +11,6 @@ Dashboard
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 {% endblock javascriptsLink %}
 
-
 {% block heading %}Dashboard{% endblock %}
 
 
@@ -39,39 +38,94 @@ Dashboard
 
       <div class ="container">
         <div class="row row-tiles">
-          <div class="column-4 project-1 col-md-4">
-            <h2 class="project-text parm temp">{{temp}} C</h2>
+
+          <div class="column-4 project-1 col-md-6">
+            <h2 class="project-text co2" value={{eco2}} >{{eco2}} ppm</h2>
+            <div class="settings low_co2_settings">The CO2 Warning Level is: {{settings_data.co2_lower_bound}}</div>
+            <div class="settings high_co2_settings">The CO2 Alert Level is: {{settings_data.co2_upper_bound}}</div>
+          </div>
+    
+          <div class="column-4 project-1 col-md-6">
+            <h2 class="project-text tvoc">{{tvoc}} tVOC</h2>
+            <div class="settings low_tvoc_settings">The TVOC Warning Level is: {{settings_data.tvoc_lower_bound}}</div>
+            <div class="settings high_tvoc_settings">The TVOC Alert Level is: {{settings_data.tvoc_upper_bound}}</div>
           </div>
             
-          <div class="column-4 project-1 col-md-4">
-              <h2 class="project-text">{{humidity}} %</h2>
-          </div>
-            
-          <div class="column-4 project-1 col-md-4">
-              <h2 class="project-text">{{particles}} µM</h2>
+          <div class="column-4 project-1 col-md-6">
+              <h2 class="project-text particles">{{particles}} µM</h2>
+              <div class="settings low_particles_settings">The Particles Warning Level is: {{settings_data.particles_lower_bound}}</div>
+              <div class="settings high_particles_settings">The Particles Alert Level is: {{settings_data.particles_upper_bound}}</div>
           </div>
         </div>
 
         <div class="row row-tiles">
-          <div class="column-4 project-1 col-md-6">
-            <h2 class="project-text" value={{eco2}} >{{eco2}} ppm</h2>
-            <div class="eco2Class" id ="eco2" style="display: none;">The particle value should not be greater than 10</div>
+
+          <div class="column-5 project-1 col-md-4">
+            <h2 id="temperature" class="project-text parm temp">{{temp}} ˚C</h2>
+            <div class="settings low_temp_settings">The Low Temperature Warning is: {{settings_data.temperature_lower_bound}}</div>
+            <div class="settings high_temp_settings">The High Temperature Warning is: {{settings_data.temperature_upper_bound}}</div>
           </div>
-    
-          <div class="column-4 project-1 col-md-6">
-            <h2 class="project-text">{{tvoc}} tVOC</h2>
+            
+          <div class="column-5 project-1 col-md-4">
+              <h2 class="project-text humidity">{{humidity}} %</h2>
+              <div class="settings low_humidity_settings">The Low Humidity Warning is: {{settings_data.humidity_lower_bound}}</div>
+              <div class="settings high_humidity_settings">The High Humidity Warning is: {{settings_data.humidity_upper_bound}}</div>
           </div>
+
+
         </div>  
 
       </div>
     </div>
+
+    <div class="refresh">
+      <button class="refresh" onClick="window.location.reload();">Refresh Results</button>
+      </div>
+      
   {% endblock %}
 
   {% block javascripts %}
   <script>
-    if({{eco2}} == 0){
-      $(".eco2Class").css("display", "block");
+    if({{temp}} >= {{settings_data.temperature_upper_bound}}){
+      $(".temp").css("color", "red");
     }  
+
+    if({{temp}} <= {{settings_data.temperature_lower_bound}}){
+      $(".temp").css("color", "blue");
+    } 
+    
+    if({{humidity}} >= {{settings_data.humidity_upper_bound}}){
+      $(".humidity").css("color", "red");
+    }  
+
+    if({{humidity}} <= {{settings_data.humidity_lower_bound}}){
+      $(".humidity").css("color", "blue");
+    }
+
+    if({{particles}} >= {{settings_data.particles_upper_bound}}){
+      $(".particles").css("color", "red");
+    } 
+    
+    else if({{particles}} >= {{settings_data.particles_lower_bound}}){
+      $(".particles").css("color", "orange");
+    } 
+    
+    if({{eco2}} >= {{settings_data.co2_upper_bound}}){
+      $(".co2").css("color", "red");
+    }  
+
+    else if({{eco2}} >= {{settings_data.co2_lower_bound}}){
+      $(".co2").css("color", "orange");
+    }
+
+    if({{tvoc}} >= {{settings_data.tvoc_upper_bound}}){
+      $(".tvoc").css("color", "red");
+    }  
+
+    else if({{tvoc}} >= {{settings_data.tvoc_lower_bound}}){
+      $(".tvoc").css("color", "orange");
+    }
+   
     </script>
   
   {% endblock javascripts %}

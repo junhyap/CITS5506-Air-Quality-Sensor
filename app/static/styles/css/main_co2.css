@@ -46,4 +46,11 @@ body {
          background-color: rgb(31, 40, 62);
          color: white;
      } 
+
+     .refresh{
+        display: flex;
+        justify-content: center;
+      }    
+    
+
     

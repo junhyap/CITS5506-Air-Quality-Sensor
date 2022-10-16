@@ -19,7 +19,7 @@ am5.ready(function() {
 );
 
 // setting scroll bars in the X and Y direction
-chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal" }));
+chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal", start: 0.98, end: 1 }));
 chart.set("scrollbarY", am5.Scrollbar.new(root, { orientation: "vertical" }));
 
 // adding axis
@@ -36,6 +36,8 @@ var yAxis = chart.yAxes.push(
 // time unit is set to minute
 var xAxis = chart.xAxes.push(
     am5xy.DateAxis.new(root, {
+      start: 0.98,
+      end: 1,
       baseInterval: { timeUnit: "second", count: 1 },
       renderer: am5xy.AxisRendererX.new(root, {})
     })
@@ -67,7 +69,7 @@ var series = chart.series.push(
 
   // Adding labels to the graph axes, setting the y label to vertical 
   yAxis.children.moveValue(am5.Label.new(root, { 
-    text: "Dust (tVOC)", 
+    text: "tvoc (µg/m³)", 
     rotation: -90, 
     y: am5.p50, 
     centerX: am5.p50,

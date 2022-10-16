@@ -19,7 +19,7 @@ am5.ready(function() {
 );
 
 // setting scroll bars in the X and Y direction
-chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal" }));
+chart.set("scrollbarX", am5.Scrollbar.new(root, { orientation: "horizontal", start: 0.98, end: 1 }));
 chart.set("scrollbarY", am5.Scrollbar.new(root, { orientation: "vertical" }));
 
 // adding axis
@@ -29,13 +29,14 @@ var yAxis = chart.yAxes.push(
     })
   );
 
-
 // Axis renderer
 // selected DateAxis
 // Documentation: https://www.amcharts.com/docs/v5/charts/xy-chart/axes/date-axis/
 // time unit is set to minute
 var xAxis = chart.xAxes.push(
     am5xy.DateAxis.new(root, {
+      start: 0.98,
+      end: 1,
       baseInterval: { timeUnit: "second", count: 1 },
       renderer: am5xy.AxisRendererX.new(root, {})
     })
@@ -84,7 +85,6 @@ xAxis.children.push(am5.Label.new(root, {
     fill: am5.Color.fromCSS("rgba(255, 255, 255, 1)")
 }));
 
-
 //series.get("tooltip").label.set("text", "{valueX.formatDate()}: {valueY}")
 //  series.data.setAll(temp_data_to_graph);
   
@@ -130,7 +130,7 @@ createSeries("Series #1", "temp");
 // Add cursor
 chart.set("cursor", am5xy.XYCursor.new(root, {
   behavior: "zoomXY",
-  xAxis: xAxis
+  xAxis: xAxis,
 }));
 
 
