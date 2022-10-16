@@ -123,17 +123,17 @@ def main_dashboard():
         warning_count+=1
 
     # flash a low temp or humidity warning
-    if(low_count != 0):
+    if(low_count != 0 and warning_count==0 and alert_count==0):
         flash("Low Temp / Humidity Warning", 'low')
 
-    if(warning_count == 0 and alert_count == 0 and low_count == 0):
+    elif(warning_count == 0 and alert_count == 0 and low_count == 0):
         flash("The Air Quality is Good", 'success')
 
     elif(warning_count != 0 and alert_count != 0):
-        flash("There is {alerts} alert(s) and {warnings} warning(s)".format(alerts=alert_count, warnings=warning_count), 'danger')
+        flash("There is {alerts} alert(s) and {warnings} warning(s)".format(alerts=alert_count, warnings=warning_count+low_count), 'danger')
 
-    elif(alert_count == 0):
-        flash("There is {warnings} warning(s)".format(warnings=warning_count), 'warning')
+    elif(alert_count == 0 and low_count == 0):
+        flash("There is {warnings} warning(s)".format(warnings=warning_count+low_count), 'warning')
 
     else:
         flash("There is {alerts} alert(s)".format(alerts=alert_count),'danger')
