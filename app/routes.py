@@ -95,8 +95,13 @@ def main_paige():
 @app.route("/")
 @app.route("/main_dashboard")
 def main_dashboard():
+    airqualityList = AirQuality.query.all()[-1]
 
-    airqualityList = AirQuality.query.first()
+    check = list(airqualityList.to_dict().values())[2:] == [0,0,0,0,0]
+
+    if(check):
+        airqualityList = AirQuality.query.all()[-2]
+        flash('Displaying Results From {date}'.format(date=list(airqualityList.to_dict().values())[0]))
 
     # print(airqualityList.eco2)
     timestamp = airqualityList.timestamp
@@ -107,11 +112,11 @@ def main_dashboard():
     tvoc = airqualityList.tvoc
 
     if temp == 0:
-        flash("Air Quality Index for this location is Bad", "danger")
+         flash("Air Quality Index for this location is Bad", "danger")
     else:
-        flash("Air Quality Index for this location is Good", "success")
+         flash("Air Quality Index for this location is Good", "success")
 
-    return render_template(
+    return render_template(    
         "main_dashboard.html",
         timestamp=timestamp,
         temp=temp,
@@ -120,7 +125,6 @@ def main_dashboard():
         eco2=eco2,
         tvoc=tvoc,
     )
-
 
 @app.route("/main_temperature")
 def main_temp():
