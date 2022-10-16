@@ -55,7 +55,7 @@ Dashboard
         <div class="row row-tiles">
           <div class="column-4 project-1 col-md-6">
             <h2 class="project-text" value={{eco2}} >{{eco2}} ppm</h2>
-            <div class="eco2Class" id ="eco2" style="display: none;">The particle value should not be greater than 10</div>
+            <div class="eco2Class" id ="eco2" style="display: none;">The particle value should not be greater than {{settings_data.particles_lower_bound}}</div>
           </div>
     
           <div class="column-4 project-1 col-md-6">
@@ -75,3 +75,4 @@ Dashboard
     </script>
   
   {% endblock javascripts %}
+
