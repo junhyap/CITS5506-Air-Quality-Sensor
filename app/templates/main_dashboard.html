@@ -87,7 +87,7 @@ Dashboard
   {% block javascripts %}
   <script>
     if({{temp}} >= {{settings_data.temperature_upper_bound}}){
-      $(".temp").css("color", "red");
+      $(".temp").css("color", "orange");
     }  
 
     if({{temp}} <= {{settings_data.temperature_lower_bound}}){
@@ -95,7 +95,7 @@ Dashboard
     } 
     
     if({{humidity}} >= {{settings_data.humidity_upper_bound}}){
-      $(".humidity").css("color", "red");
+      $(".humidity").css("color", "orange");
     }  
 
     if({{humidity}} <= {{settings_data.humidity_lower_bound}}){
