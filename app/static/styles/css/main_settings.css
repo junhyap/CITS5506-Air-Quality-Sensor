@@ -76,6 +76,12 @@ body {
       justify-content: center;
     }
 
+    .guide{
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
 
 
 
