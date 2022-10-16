@@ -70,7 +70,7 @@ class AirQuality(PaginatedAPIMixin, db.Model):
                 setattr(self, field, data[field])
 
 
-class Settings(PaginatedAPIMixin, db.Model):
+class Settings(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     temperature_lower_bound = db.Column(
         db.Integer,
@@ -139,3 +139,4 @@ class Settings(PaginatedAPIMixin, db.Model):
         for field in fields: 
             if field in data:
                 setattr(self, field, data[field])
+
